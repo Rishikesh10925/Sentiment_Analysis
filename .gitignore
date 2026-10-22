@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+
+# Env
+.env
+
+# Data (raw/processed can be large or contain real data later)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Models
+models/*.pkl
+models/*.joblib
+
+# Bundled portable JDK (downloaded by Stage 5 setup, ~300MB, not project code)
+.tools/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Editors / OS
+.vscode/
+.DS_Store

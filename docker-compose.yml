@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: sentiment-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: social_sentiment
+    ports:
+      - "5434:5432"  # host port 5434, avoiding the default 5432 in case something else on your machine already uses it
+    volumes:
+      - sentiment_pgdata:/var/lib/postgresql/data
+
+volumes:
+  sentiment_pgdata:

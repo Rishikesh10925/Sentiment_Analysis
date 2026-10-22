@@ -1,0 +1,23 @@
+# Data / ML
+pandas==2.2.3
+numpy==1.26.4
+scikit-learn==1.5.2
+joblib==1.5.3
+pyspark==4.0.4
+# Note: pyspark 3.5.x has known Python 3.12 worker-startup issues on Windows
+# (pyspark.daemon fails to import POSIX-only signals). 4.0.4 fixed this in
+# testing; use whichever 3.5.x/4.x release is verified working in your
+# environment if 3.12 isn't your interpreter.
+
+# Backend
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+psycopg2-binary==2.9.10
+sqlalchemy==2.0.36
+python-dotenv==1.0.1
+pydantic==2.10.2
+python-multipart==0.0.19
+
+# Testing
+pytest==8.3.4
+httpx==0.28.1  # used by fastapi.testclient.TestClient

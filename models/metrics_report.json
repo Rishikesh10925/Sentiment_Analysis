@@ -1,0 +1,63 @@
+{
+  "training_rows": 4000,
+  "test_rows": 1000,
+  "selected_model": "logistic_regression",
+  "models": {
+    "logistic_regression": {
+      "accuracy": 0.918,
+      "precision": 0.9182,
+      "recall": 0.918,
+      "f1": 0.918,
+      "confusion_matrix": [
+        [
+          364,
+          20,
+          17
+        ],
+        [
+          11,
+          299,
+          12
+        ],
+        [
+          17,
+          5,
+          255
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "Positive",
+        "Neutral",
+        "Negative"
+      ]
+    },
+    "multinomial_naive_bayes": {
+      "accuracy": 0.918,
+      "precision": 0.9182,
+      "recall": 0.918,
+      "f1": 0.918,
+      "confusion_matrix": [
+        [
+          364,
+          20,
+          17
+        ],
+        [
+          11,
+          299,
+          12
+        ],
+        [
+          17,
+          5,
+          255
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "Positive",
+        "Neutral",
+        "Negative"
+      ]
+    }
+  }
+}
