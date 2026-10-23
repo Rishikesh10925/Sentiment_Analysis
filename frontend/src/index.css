@@ -1,64 +1,200 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #f8fafc;
-  --color-surface: #ffffff;
-  --color-border: #e2e8f0;
-  --color-text: #0f172a;
-  --color-text-muted: #64748b;
-
-  --color-positive: #16a34a;
-  --color-positive-bg: #dcfce7;
-  --color-neutral: #64748b;
-  --color-neutral-bg: #e2e8f0;
-  --color-negative: #dc2626;
-  --color-negative-bg: #fee2e2;
-
-  --color-platform-1: #6366f1;
-  --color-platform-2: #0ea5e9;
-  --color-platform-3: #f43f5e;
-  --color-platform-4: #f97316;
-  --color-platform-5: #06b6d4;
-  --color-platform-6: #14b8a6;
+  --ink: #07090f;
+  --ink-soft: #0b0e17;
+  --panel: #10141f;
+  --panel-2: #151a27;
+  --line: #232a3b;
+  --line-soft: #1a2030;
+  --text: #f2f4f8;
+  --muted: #8e97ac;
+  --muted-2: #646d82;
+  --lime: #c8f56a;
+  --lime-dim: #93b94d;
+  --coral: #ff7676;
+  --sky: #6fd4ff;
+  --violet: #b39dff;
+  --amber: #ffc66d;
+  --positive: #9ee37d;
+  --neutral: #8d98b3;
+  --negative: #ff7c86;
+  --radius: 18px;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-bg: #0b1220;
-    --color-surface: #131c2e;
-    --color-border: #253044;
-    --color-text: #e2e8f0;
-    --color-text-muted: #94a3b8;
-
-    --color-positive-bg: #14532d;
-    --color-neutral-bg: #334155;
-    --color-negative-bg: #7f1d1d;
-  }
+:root[data-theme="light"] {
+  --ink: #f4f1e8;
+  --ink-soft: #ece8dc;
+  --panel: #fbf9f2;
+  --panel-2: #f6f2e7;
+  --line: #d9d3c3;
+  --line-soft: #e6e0d2;
+  --text: #16181d;
+  --muted: #5d6473;
+  --muted-2: #7d8595;
+  --lime: #3c5a12;
+  --lime-dim: #5d7c25;
+  --coral: #b83232;
+  --sky: #0c6f94;
+  --violet: #6247c9;
+  --amber: #9a6100;
+  --positive: #2c7a3f;
+  --neutral: #697386;
+  --negative: #b43745;
+  color-scheme: light;
 }
 
-:root[data-theme="dark"] {
-  --color-bg: #0b1220;
-  --color-surface: #131c2e;
-  --color-border: #253044;
-  --color-text: #e2e8f0;
-  --color-text-muted: #94a3b8;
+* {
+  box-sizing: border-box;
+}
 
-  --color-positive-bg: #14532d;
-  --color-neutral-bg: #334155;
-  --color-negative-bg: #7f1d1d;
+html {
+  background: var(--ink);
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+  margin: 0;
+  background:
+    radial-gradient(1100px 600px at 82% -10%, color-mix(in srgb, var(--lime) 9%, transparent), transparent 65%),
+    radial-gradient(800px 500px at -10% 35%, color-mix(in srgb, var(--sky) 6%, transparent), transparent 60%),
+    var(--ink);
+  color: var(--text);
+  font-family: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv05";
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+h1, h2, h3, .display {
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  letter-spacing: -0.025em;
+  font-weight: 500;
 }
-::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
+
+.mono {
+  font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.panel {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--panel) 92%, white 2%), var(--panel));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 0 color-mix(in srgb, white 4%, transparent) inset;
+}
+
+.panel-soft {
+  background: var(--panel-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+}
+
+.eyebrow {
+  font-family: "Cascadia Mono", Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hairline {
+  border-color: var(--line);
+}
+
+.grid-noise {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--line) 38%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--line) 38%, transparent) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.glow-lime {
+  box-shadow: 0 0 40px color-mix(in srgb, var(--lime) 16%, transparent);
+}
+
+.text-lime { color: var(--lime); }
+.text-muted { color: var(--muted); }
+.text-negative { color: var(--negative); }
+.text-positive { color: var(--positive); }
+.text-neutral { color: var(--neutral); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 8px 13px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+}
+.btn:hover { border-color: color-mix(in srgb, var(--lime) 40%, var(--line)); }
+.btn:active { transform: translateY(1px); }
+.btn-primary {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: #0b1005;
+}
+.btn-primary:hover { background: color-mix(in srgb, var(--lime) 86%, white); }
+.btn-ghost { background: transparent; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.field {
+  background: var(--ink-soft);
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 8px 11px;
+  font-size: 12.5px;
+  outline: none;
+  min-height: 36px;
+}
+.field:focus { border-color: color-mix(in srgb, var(--lime) 55%, var(--line)); }
+select.field { cursor: pointer; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: var(--line); border-radius: 99px; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: rise 420ms cubic-bezier(.2,.7,.2,1) both; }
+.rise-1 { animation-delay: 60ms; }
+.rise-2 { animation-delay: 120ms; }
+.rise-3 { animation-delay: 180ms; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 color-mix(in srgb, var(--lime) 50%, transparent); }
+  50% { opacity: .65; box-shadow: 0 0 0 5px transparent; }
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lime);
+  animation: pulse-dot 2.4s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .live-dot { animation: none; }
 }
