@@ -1,8 +1,11 @@
 """
-Tests for the Stage 7 database layer. Requires a reachable PostgreSQL
-(see .env / .env.example); skipped gracefully if none is available, since
-that's an environment concern, not a code-correctness one.
+Tests for the Stage 7 database layer. These reload the dashboard tables from
+the sample CSV, so they only run against a throwaway database configured via
+TEST_DATABASE_URL (see conftest.py). Without it they skip: running them
+against the demo database would replace the 1.65M-row corpus with sample data.
 """
+
+import os
 
 import pytest
 from sqlalchemy import text
@@ -18,7 +21,13 @@ def _db_available():
         return False
 
 
-pytestmark = pytest.mark.skipif(not _db_available(), reason="No reachable PostgreSQL for this environment")
+pytestmark = pytest.mark.skipif(
+    not os.environ.get("TEST_DATABASE_URL") or not _db_available(),
+    reason=(
+        "Destructive loader tests require TEST_DATABASE_URL pointing at a "
+        "throwaway PostgreSQL database"
+    ),
+)
 
 
 def test_load_data_populates_all_tables():

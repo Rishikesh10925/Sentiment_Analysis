@@ -8,31 +8,82 @@ Run:
     uvicorn backend.main:app --reload --port 8000
 """
 
-import shutil
+import importlib.util
+import re
+import secrets
+import time
+from datetime import datetime
 from pathlib import Path
 
-from fastapi import Depends, FastAPI, HTTPException, Query, UploadFile
+from fastapi import Depends, FastAPI, Header, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-from backend import crud
+from backend import crud, v2
 from backend.db.session import get_db
+from backend.observability import (
+    ObservabilityMiddleware,
+    RateLimitMiddleware,
+    configure_logging,
+)
+from backend.settings import get_settings
 from ingestion.config import RAW_DATA_DIR, REQUIRED_COLUMNS
 from ingestion.validate import ValidationError, load_csv, validate_data
 from scripts.run_pipeline import run_full_pipeline
 
+settings = get_settings()
+configure_logging()
+
 app = FastAPI(
-    title="Social Media Sentiment & Trend Analysis API",
-    description="Serves multi-platform sentiment analytics computed by the PySpark + ML pipeline.",
-    version="1.0.0",
+    title="Signal - Social Sentiment Intelligence API",
+    description=(
+        "Analytics over 1.65M real public social posts, with filtered aggregates, "
+        "per-post explanations, research artifacts and reproducible exports."
+    ),
+    version="2.0.0",
+    docs_url="/api/docs" if settings.enable_docs else None,
+    redoc_url="/api/redoc" if settings.enable_docs else None,
+    openapi_url="/api/openapi.json" if settings.enable_docs else None,
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # demo project; restrict this to the dashboard's origin in production
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=settings.cors_origin_list,
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type", "X-API-Key", "X-Request-ID"],
+    expose_headers=["X-Request-ID", "X-Response-Time-Ms", "Content-Disposition"],
+    max_age=600,
 )
+app.add_middleware(ObservabilityMiddleware)
+app.add_middleware(RateLimitMiddleware, per_minute=settings.rate_limit_per_minute)
+app.include_router(v2.router)
+
+
+def _require_upload_key(x_api_key: str | None = Header(default=None)) -> None:
+    """Upload is the only destructive endpoint, so it is key-protected.
+
+    An empty ``API_KEY`` keeps local/demo development open. Any public
+    deployment must set it (see docs/DEPLOYMENT.md).
+    """
+    if settings.api_key and not secrets.compare_digest(x_api_key or "", settings.api_key):
+        raise HTTPException(status_code=401, detail="A valid X-API-Key header is required.")
+
+
+def _safe_filename(filename: str) -> str:
+    name = Path(filename).name
+    stem = re.sub(r"[^A-Za-z0-9._-]+", "_", name).strip("._") or "upload.csv"
+    return f"{datetime.utcnow():%Y%m%d_%H%M%S}_{stem}"
+
+
+def _full_pipeline_available() -> bool:
+    """The upload re-analysis path runs the PySpark pipeline.
+
+    The production API image (`requirements-api.txt`) deliberately omits
+    Spark, so this lets the endpoint return an honest 503 instead of a
+    stack trace, while the research/dev image keeps the full behaviour.
+    """
+    return importlib.util.find_spec("pyspark") is not None
 
 
 @app.get("/api/health")
@@ -40,7 +91,19 @@ def health():
     return {"status": "ok"}
 
 
-@app.post("/api/upload")
+@app.get("/api/ready")
+def ready(db: Session = Depends(get_db)):
+    """Readiness probe: verifies the database and serving model artifact."""
+    from sqlalchemy import text
+
+    db.execute(text("SELECT 1"))
+    model_artifact = Path("models/research/tfidf_logreg.joblib").exists()
+    return {"status": "ready" if model_artifact else "degraded", "database": True,
+            "model_artifact": model_artifact,
+            "full_reanalysis": _full_pipeline_available()}
+
+
+@app.post("/api/upload", dependencies=[Depends(_require_upload_key)])
 def upload_csv(file: UploadFile, analyze: bool = True, db: Session = Depends(get_db)):
     """Validates the uploaded CSV, then (by default) runs the full pipeline
     on it: cleaning -> ML prediction -> Spark aggregation -> analytics ->
@@ -54,13 +117,27 @@ def upload_csv(file: UploadFile, analyze: bool = True, db: Session = Depends(get
     event loop. FastAPI runs sync path operations in a worker thread pool
     instead, so other requests keep working while this one is processing.
     """
-    if not file.filename.lower().endswith(".csv"):
+    if not (file.filename or "").lower().endswith(".csv"):
         raise HTTPException(status_code=400, detail="Only .csv files are accepted.")
 
+    limit_bytes = settings.max_upload_mb * 1024 * 1024
     RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
-    dest_path = RAW_DATA_DIR / file.filename
-    with open(dest_path, "wb") as out:
-        shutil.copyfileobj(file.file, out)
+    safe_name = _safe_filename(file.filename or "upload.csv")
+    dest_path = RAW_DATA_DIR / safe_name
+    written = 0
+    try:
+        with open(dest_path, "wb") as out:
+            while chunk := file.file.read(1024 * 1024):
+                written += len(chunk)
+                if written > limit_bytes:
+                    raise HTTPException(
+                        status_code=413,
+                        detail=f"File exceeds the {settings.max_upload_mb} MB upload limit.",
+                    )
+                out.write(chunk)
+    except HTTPException:
+        dest_path.unlink(missing_ok=True)
+        raise
 
     try:
         df = load_csv(dest_path)
@@ -68,12 +145,13 @@ def upload_csv(file: UploadFile, analyze: bool = True, db: Session = Depends(get
         raise HTTPException(status_code=400, detail=f"Could not read CSV: {exc}") from exc
 
     try:
-        report = validate_data(df, source_label=file.filename)
+        report = validate_data(df, source_label=file.filename or safe_name)
     except ValidationError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 
     result = {
-        "filename": file.filename,
+        "filename": file.filename or safe_name,
+        "stored_filename": safe_name,
         "saved_to": str(dest_path),
         "required_columns": REQUIRED_COLUMNS,
         "validation_report": report,
@@ -89,7 +167,18 @@ def upload_csv(file: UploadFile, analyze: bool = True, db: Session = Depends(get
 
     try:
         pipeline_log = []
+        if not _full_pipeline_available():
+            raise HTTPException(
+                status_code=503,
+                detail=(
+                    "This deployment validates uploads only (PySpark is not installed). "
+                    "Re-upload with analyze=false, or run the full pipeline in the "
+                    "research environment: python scripts/run_pipeline.py <file.csv>"
+                ),
+            )
         pipeline_result = run_full_pipeline(dest_path, load_db=True, log=pipeline_log.append)
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(
             status_code=500,

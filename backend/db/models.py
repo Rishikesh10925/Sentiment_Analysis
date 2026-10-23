@@ -52,6 +52,12 @@ class SentimentResult(Base):
     post_id = Column(String(50), ForeignKey("posts.post_id"), nullable=False, index=True)
     sentiment = Column(String(20), nullable=False, index=True)
     confidence = Column(Float)
+    gold_sentiment = Column(String(20))          # research-only ground truth
+    prob_negative = Column(Float)
+    prob_neutral = Column(Float)
+    prob_positive = Column(Float)
+    model_name = Column(String(100))
+    model_version = Column(String(50))
 
 
 class DailySentiment(Base):

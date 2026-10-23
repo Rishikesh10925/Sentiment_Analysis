@@ -1,4 +1,4 @@
-"""
+﻿"""
 Tests for the Stage 8 FastAPI backend. Uses FastAPI's TestClient, which
 calls the app in-process (no server needed) but still exercises real
 routing, dependency injection, and (for most tests) the real database.
@@ -6,6 +6,7 @@ DB-backed tests are skipped gracefully if no PostgreSQL is reachable.
 """
 
 import io
+import os
 
 import pytest
 from fastapi.testclient import TestClient
@@ -64,6 +65,13 @@ def test_upload_rejects_missing_columns():
 
 
 @db_required
+@pytest.mark.skipif(
+    os.environ.get("RUN_DESTRUCTIVE_TESTS") != "1",
+    reason=(
+        "Replaces the dashboard tables with a 30-row upload. Run explicitly with "
+        "RUN_DESTRUCTIVE_TESTS=1 (the corpus is restored afterwards)."
+    ),
+)
 def test_upload_with_analyze_runs_full_pipeline_and_replaces_dashboard_data():
     """The default (analyze=true) path: validates, then runs the real
     pipeline (preprocessing -> ml.predict -> spark.process -> analytics ->
@@ -73,10 +81,8 @@ def test_upload_with_analyze_runs_full_pipeline_and_replaces_dashboard_data():
     tests/test_spark.py checks for.
 
     This test intentionally overwrites the shared DB's data (that's the
-    feature being tested), so it restores the original demo dataset in a
-    `finally` block - other tests in this file depend on that data and
-    must not see this test's 30-row upload instead, regardless of test
-    order.
+    feature being tested), so it is opt-in via RUN_DESTRUCTIVE_TESTS=1 and
+    restores the real corpus in a `finally` block.
     """
     import pytest as _pytest
 
@@ -110,8 +116,19 @@ def test_upload_with_analyze_runs_full_pipeline_and_replaces_dashboard_data():
         dashboard_resp = client.get("/api/dashboard/summary")
         assert dashboard_resp.json()["total_posts"] == body["summary"]["total_posts"]
     finally:
-        from scripts.run_pipeline import run_full_pipeline
-        run_full_pipeline(load_db=True, log=lambda *_: None)
+        # Restore whatever the environment had before this test. On the
+        # upgraded project that is the 1.65M-row curated corpus, not the old
+        # sample CSV, so preferring the real loader matters.
+        from research.config import CURATED_PREDICTIONS_PATH
+
+        if CURATED_PREDICTIONS_PATH.exists():
+            from backend.db.load_real_data import run_load_real
+
+            run_load_real()
+        else:
+            from scripts.run_pipeline import run_full_pipeline
+
+            run_full_pipeline(load_db=True, log=lambda *_: None)
 
 
 @db_required
@@ -133,10 +150,19 @@ def test_dashboard_sentiment_has_three_classes():
 
 
 @db_required
-def test_dashboard_platforms_has_six_rows():
+def test_dashboard_platforms_match_loaded_corpus():
+    """The v1 endpoint returns one row per platform present in the database.
+
+    The old assertion hard-coded the six synthetic demo platforms; the loaded
+    corpus is real and currently has two (X/Twitter, Reddit), so the contract
+    tested here is "non-empty and every row has counts", not a fixed length.
+    """
     resp = client.get("/api/dashboard/platforms")
     assert resp.status_code == 200
-    assert len(resp.json()) == 6
+    rows = resp.json()
+    assert rows
+    assert {row["platform"] for row in rows} >= {"X/Twitter", "Reddit"}
+    assert all(row["total"] > 0 for row in rows)
 
 
 @db_required
