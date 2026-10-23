@@ -1,8 +1,14 @@
+﻿# Development / research dependencies (backend + tests + batch pipelines).
+# For a production API image, prefer requirements-api.txt: it omits Spark and
+# the transformer stack, which the serving path does not need.
+#
 # Data / ML
-pandas==2.2.3
-numpy==1.26.4
-scikit-learn==1.5.2
+pandas==2.3.3
+numpy==2.3.5
+scikit-learn==1.8.0
+ftfy==6.3.1
 joblib==1.5.3
+pyarrow==26.0.0
 pyspark==4.0.4
 # Note: pyspark 3.5.x has known Python 3.12 worker-startup issues on Windows
 # (pyspark.daemon fails to import POSIX-only signals). 4.0.4 fixed this in
@@ -14,9 +20,11 @@ fastapi==0.115.5
 uvicorn[standard]==0.32.1
 psycopg2-binary==2.9.10
 sqlalchemy==2.0.36
-python-dotenv==1.0.1
+python-dotenv==1.2.4
 pydantic==2.10.2
+pydantic-settings==2.16.1
 python-multipart==0.0.19
+reportlab==5.0.1
 
 # Testing
 pytest==8.3.4

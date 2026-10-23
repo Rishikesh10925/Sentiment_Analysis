@@ -1,0 +1,19 @@
+﻿# Runtime-only dependencies for the API container (see docker/backend.Dockerfile).
+# Deliberately excludes PySpark and the transformer stack: the deployed API
+# serves the CPU TF-IDF + logistic-regression model and never starts a Spark
+# session. Development and research use requirements.txt / requirements-research.txt.
+pandas==2.3.3
+numpy==2.3.5
+pyarrow==26.0.0
+scikit-learn==1.8.0
+ftfy==6.3.1
+joblib==1.5.3
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+psycopg2-binary==2.9.10
+sqlalchemy==2.0.36
+python-dotenv==1.2.4
+pydantic==2.10.2
+pydantic-settings==2.16.1
+python-multipart==0.0.19
+reportlab==5.0.1

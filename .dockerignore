@@ -1,0 +1,23 @@
+# Keep the build context small and never ship secrets or bulk data.
+.git
+.gitignore
+.env
+.venv
+.venv/**
+__pycache__
+**/__pycache__
+.pytest_cache
+.tools
+node_modules
+**/node_modules
+frontend/dist
+frontend/coverage
+data/real
+data/processed
+data/curated/*.parquet
+results/**/*.parquet
+models/**/*.safetensors
+models/research/distilbert_*
+*.log
+docs
+tests

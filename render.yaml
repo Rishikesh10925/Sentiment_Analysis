@@ -1,0 +1,49 @@
+# Render Blueprint: one API service + one static site.
+#
+# The database is Neon (external), so it is not declared here. Create the Neon
+# project first, then set DATABASE_URL when Render prompts for the `sync: false`
+# variable below. See docs/DEPLOYMENT.md for the full runbook.
+services:
+  - type: web
+    name: signal-api
+    runtime: docker
+    dockerfilePath: ./docker/backend.Dockerfile
+    dockerContext: .
+    plan: starter
+    healthCheckPath: /api/ready
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: ENABLE_DOCS
+        value: "false"
+      - key: API_KEY
+        generateValue: true
+      - key: CORS_ORIGINS
+        sync: false
+      - key: NEGATIVE_SENTIMENT_ALERT_THRESHOLD
+        value: "40"
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "120"
+
+  - type: web
+    name: signal-web
+    runtime: static
+    buildCommand: cd frontend && npm ci && npm run build
+    staticPublishPath: ./frontend/dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: signal-api
+          envVarKey: RENDER_EXTERNAL_URL
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable

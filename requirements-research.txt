@@ -1,0 +1,13 @@
+# Research-only dependencies: transformer fine-tuning, external model
+# evaluation, SHAP/LIME faithfulness studies. Not needed to run the API.
+#
+# CPU wheels for torch are installed from the PyTorch CPU index (smaller than
+# the default CUDA build):
+#   pip install -r requirements-research.txt \
+#     --extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.13.0
+transformers==5.16.1
+datasets==5.1.0
+accelerate==1.14.0
+shap==0.54.1
+lime==0.2.0.1
