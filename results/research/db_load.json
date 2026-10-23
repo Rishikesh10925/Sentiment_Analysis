@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "posts": 1646816,
+    "sentiment_results": 1646816,
+    "model_version": "a513b9574c72",
+    "daily_sentiment": 80,
+    "topics": 17,
+    "hashtags": 100,
+    "keywords": 100,
+    "alerts": 2
+  },
+  "alerts": {
+    "overall_negative_pct": 31.49,
+    "major_topic": "Health",
+    "current_28d_negative_pct": 43.09,
+    "previous_28d_negative_pct": 42.8,
+    "change_pp": 0.29
+  },
+  "loaded_at": "2026-10-23T05:49:18.974642"
+}

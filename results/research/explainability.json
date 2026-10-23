@@ -1,0 +1,120 @@
+{
+  "available": true,
+  "method": "exact linear SHAP (TF-IDF value x class coefficient)",
+  "n_examples": 150,
+  "top_k": 3,
+  "deletion_faithfulness": {
+    "mean_probability_drop_top_tokens": 0.3876,
+    "mean_probability_drop_random_tokens": -0.0476,
+    "faithfulness_gap": 0.4353,
+    "share_top_beats_random": 0.9733
+  },
+  "lime_agreement": {
+    "n_examples": 60,
+    "mean_top5_jaccard": 0.3241,
+    "share_with_any_overlap": 0.8667
+  },
+  "examples": [
+    {
+      "text": "Do you think Michelle Obama wanted to smack Melania Trump for plagiarizing her convention speech? She has the arms for it.",
+      "predicted": "Neutral",
+      "probability": 0.4277,
+      "top_tokens": [
+        "do",
+        "you",
+        "arms"
+      ],
+      "probability_after_top_deletion": 0.1973,
+      "probability_after_random_deletion": 0.3961
+    },
+    {
+      "text": "Well that finale was one big mindfuck 😳 #Westworld",
+      "predicted": "Negative",
+      "probability": 0.6463,
+      "top_tokens": [
+        "that",
+        "was",
+        "one"
+      ],
+      "probability_after_top_deletion": 0.0668,
+      "probability_after_random_deletion": 0.5883
+    },
+    {
+      "text": "Luis Enrique: \"In the first half I can't remember Celtic having a clear chance and Messi as usual was at a really high level.\" #fcblive",
+      "predicted": "Neutral",
+      "probability": 0.5767,
+      "top_tokens": [
+        "at",
+        "remember",
+        "half"
+      ],
+      "probability_after_top_deletion": 0.2782,
+      "probability_after_random_deletion": 0.6396
+    },
+    {
+      "text": "Happy Thanksgiving from a couple of bad hombres! #movember #firefighters #thanksgiving…",
+      "predicted": "Positive",
+      "probability": 0.7078,
+      "top_tokens": [
+        "happy",
+        "thanksgiving"
+      ],
+      "probability_after_top_deletion": 0.0391,
+      "probability_after_random_deletion": 0.9549
+    },
+    {
+      "text": "@user Viper. Another fucking nazi",
+      "predicted": "Negative",
+      "probability": 0.9886,
+      "top_tokens": [
+        "fucking",
+        "nazi",
+        "another"
+      ],
+      "probability_after_top_deletion": 0.019,
+      "probability_after_random_deletion": 0.993
+    },
+    {
+      "text": "Viendo The Walking Dead 7x02 - El pozo #TheWalkingDead",
+      "predicted": "Negative",
+      "probability": 0.541,
+      "top_tokens": [
+        "dead",
+        "el",
+        "walking"
+      ],
+      "probability_after_top_deletion": 0.0723,
+      "probability_after_random_deletion": 0.7174
+    },
+    {
+      "text": "Watch peanut butter drone strikes that could save endangered ferrets #USFWS #endangeredspecies",
+      "predicted": "Neutral",
+      "probability": 0.508,
+      "top_tokens": [
+        "drone",
+        "strikes"
+      ],
+      "probability_after_top_deletion": 0.2413,
+      "probability_after_random_deletion": 0.5751
+    },
+    {
+      "text": "Wow! Liberals are now asking for a refund from Jill Stein lol",
+      "predicted": "Positive",
+      "probability": 0.5664,
+      "top_tokens": [
+        "wow",
+        "lol",
+        "for"
+      ],
+      "probability_after_top_deletion": 0.0966,
+      "probability_after_random_deletion": 0.6233
+    }
+  ],
+  "runtime_seconds": 34.61,
+  "limitations": [
+    "Deletion changes the TF-IDF normalisation as well as the token, so the measured drop is not a pure causal effect.",
+    "LIME is itself an approximation and uses random perturbations; agreement is descriptive.",
+    "The sample is 150 held-out rows, so the intervals around these means are not negligible.",
+    "Attributions are model behaviour, not evidence about the author's intent or real-world impact."
+  ]
+}

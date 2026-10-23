@@ -1,0 +1,1363 @@
+{
+  "majority": {
+    "n": 12284,
+    "accuracy": 0.4833,
+    "macro_precision": 0.1611,
+    "macro_recall": 0.3333,
+    "macro_f1": 0.2172,
+    "weighted_precision": 0.2336,
+    "weighted_recall": 0.4833,
+    "weighted_f1": 0.315,
+    "per_class": {
+      "Negative": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 3972
+      },
+      "Neutral": {
+        "precision": 0.4833,
+        "recall": 1.0,
+        "f1": 0.6517,
+        "support": 5937
+      },
+      "Positive": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 2375
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        3972,
+        0
+      ],
+      [
+        0,
+        5937,
+        0
+      ],
+      [
+        0,
+        2375,
+        0
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ],
+    "bootstrap_macro_f1": {
+      "metric": "macro_f1",
+      "mean": 0.2172,
+      "ci95_low": 0.2144,
+      "ci95_high": 0.2198,
+      "n_boot": 1000
+    },
+    "calibration": {
+      "ece": 0.5167,
+      "brier": 1.0334,
+      "reliability": [
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "count": 12284,
+          "avg_confidence": 1.0,
+          "accuracy": 0.4833
+        }
+      ]
+    },
+    "latency_ms_per_1k": 8.15,
+    "train_seconds": 0.01
+  },
+  "tfidf_logreg": {
+    "n": 12284,
+    "accuracy": 0.5856,
+    "macro_precision": 0.5748,
+    "macro_recall": 0.5914,
+    "macro_f1": 0.5816,
+    "weighted_precision": 0.5896,
+    "weighted_recall": 0.5856,
+    "weighted_f1": 0.5862,
+    "per_class": {
+      "Negative": {
+        "precision": 0.5693,
+        "recall": 0.5967,
+        "f1": 0.5827,
+        "support": 3972
+      },
+      "Neutral": {
+        "precision": 0.6282,
+        "recall": 0.5691,
+        "f1": 0.5972,
+        "support": 5937
+      },
+      "Positive": {
+        "precision": 0.527,
+        "recall": 0.6084,
+        "f1": 0.5648,
+        "support": 2375
+      }
+    },
+    "confusion_matrix": [
+      [
+        2370,
+        1304,
+        298
+      ],
+      [
+        1559,
+        3379,
+        999
+      ],
+      [
+        234,
+        696,
+        1445
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ],
+    "bootstrap_macro_f1": {
+      "metric": "macro_f1",
+      "mean": 0.5815,
+      "ci95_low": 0.5728,
+      "ci95_high": 0.5902,
+      "n_boot": 1000
+    },
+    "calibration": {
+      "ece": 0.0784,
+      "brier": 0.5358,
+      "reliability": [
+        {
+          "bin_low": 0.3,
+          "bin_high": 0.4,
+          "count": 311,
+          "avg_confidence": 0.3775,
+          "accuracy": 0.3633
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "count": 1927,
+          "avg_confidence": 0.4597,
+          "accuracy": 0.424
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6,
+          "count": 2693,
+          "avg_confidence": 0.5487,
+          "accuracy": 0.5221
+        },
+        {
+          "bin_low": 0.6,
+          "bin_high": 0.7,
+          "count": 2460,
+          "avg_confidence": 0.6488,
+          "accuracy": 0.5809
+        },
+        {
+          "bin_low": 0.7,
+          "bin_high": 0.8,
+          "count": 1994,
+          "avg_confidence": 0.7481,
+          "accuracy": 0.6354
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "count": 1610,
+          "avg_confidence": 0.8468,
+          "accuracy": 0.6696
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "count": 1289,
+          "avg_confidence": 0.9508,
+          "accuracy": 0.841
+        }
+      ]
+    },
+    "latency_ms_per_1k": 24.53,
+    "train_seconds": 8.92
+  },
+  "tfidf_multinomial_nb": {
+    "n": 12284,
+    "accuracy": 0.5578,
+    "macro_precision": 0.5902,
+    "macro_recall": 0.5274,
+    "macro_f1": 0.5029,
+    "weighted_precision": 0.5972,
+    "weighted_recall": 0.5578,
+    "weighted_f1": 0.521,
+    "per_class": {
+      "Negative": {
+        "precision": 0.7162,
+        "recall": 0.2014,
+        "f1": 0.3144,
+        "support": 3972
+      },
+      "Neutral": {
+        "precision": 0.5578,
+        "recall": 0.7783,
+        "f1": 0.6498,
+        "support": 5937
+      },
+      "Positive": {
+        "precision": 0.4965,
+        "recall": 0.6025,
+        "f1": 0.5444,
+        "support": 2375
+      }
+    },
+    "confusion_matrix": [
+      [
+        800,
+        2758,
+        414
+      ],
+      [
+        279,
+        4621,
+        1037
+      ],
+      [
+        38,
+        906,
+        1431
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ],
+    "bootstrap_macro_f1": {
+      "metric": "macro_f1",
+      "mean": 0.5028,
+      "ci95_low": 0.4934,
+      "ci95_high": 0.5121,
+      "n_boot": 1000
+    },
+    "calibration": {
+      "ece": 0.0341,
+      "brier": 0.5605,
+      "reliability": [
+        {
+          "bin_low": 0.3,
+          "bin_high": 0.4,
+          "count": 360,
+          "avg_confidence": 0.3786,
+          "accuracy": 0.3833
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "count": 2758,
+          "avg_confidence": 0.4605,
+          "accuracy": 0.4561
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6,
+          "count": 3827,
+          "avg_confidence": 0.548,
+          "accuracy": 0.5252
+        },
+        {
+          "bin_low": 0.6,
+          "bin_high": 0.7,
+          "count": 2957,
+          "avg_confidence": 0.6468,
+          "accuracy": 0.5959
+        },
+        {
+          "bin_low": 0.7,
+          "bin_high": 0.8,
+          "count": 1657,
+          "avg_confidence": 0.7425,
+          "accuracy": 0.6614
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "count": 597,
+          "avg_confidence": 0.8382,
+          "accuracy": 0.7839
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "count": 128,
+          "avg_confidence": 0.9341,
+          "accuracy": 0.9375
+        }
+      ]
+    },
+    "latency_ms_per_1k": 22.99,
+    "train_seconds": 2.26
+  },
+  "tfidf_complement_nb": {
+    "n": 12284,
+    "accuracy": 0.566,
+    "macro_precision": 0.5582,
+    "macro_recall": 0.5834,
+    "macro_f1": 0.5661,
+    "weighted_precision": 0.5745,
+    "weighted_recall": 0.566,
+    "weighted_f1": 0.5655,
+    "per_class": {
+      "Negative": {
+        "precision": 0.5412,
+        "recall": 0.6201,
+        "f1": 0.578,
+        "support": 3972
+      },
+      "Neutral": {
+        "precision": 0.6222,
+        "recall": 0.507,
+        "f1": 0.5587,
+        "support": 5937
+      },
+      "Positive": {
+        "precision": 0.5112,
+        "recall": 0.6232,
+        "f1": 0.5617,
+        "support": 2375
+      }
+    },
+    "confusion_matrix": [
+      [
+        2463,
+        1216,
+        293
+      ],
+      [
+        1805,
+        3010,
+        1122
+      ],
+      [
+        283,
+        612,
+        1480
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ],
+    "bootstrap_macro_f1": {
+      "metric": "macro_f1",
+      "mean": 0.5662,
+      "ci95_low": 0.5571,
+      "ci95_high": 0.5747,
+      "n_boot": 1000
+    },
+    "calibration": {
+      "ece": 0.0856,
+      "brier": 0.5614,
+      "reliability": [
+        {
+          "bin_low": 0.3,
+          "bin_high": 0.4,
+          "count": 2457,
+          "avg_confidence": 0.3754,
+          "accuracy": 0.4261
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "count": 5712,
+          "avg_confidence": 0.4461,
+          "accuracy": 0.5355
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6,
+          "count": 2693,
+          "avg_confidence": 0.542,
+          "accuracy": 0.6431
+        },
+        {
+          "bin_low": 0.6,
+          "bin_high": 0.7,
+          "count": 974,
+          "avg_confidence": 0.6417,
+          "accuracy": 0.7505
+        },
+        {
+          "bin_low": 0.7,
+          "bin_high": 0.8,
+          "count": 333,
+          "avg_confidence": 0.7432,
+          "accuracy": 0.8318
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "count": 92,
+          "avg_confidence": 0.8442,
+          "accuracy": 0.913
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "count": 23,
+          "avg_confidence": 0.9352,
+          "accuracy": 1.0
+        }
+      ]
+    },
+    "latency_ms_per_1k": 22.85,
+    "train_seconds": 2.25
+  },
+  "tfidf_linear_svc": {
+    "n": 12284,
+    "accuracy": 0.5913,
+    "macro_precision": 0.5798,
+    "macro_recall": 0.5926,
+    "macro_f1": 0.5846,
+    "weighted_precision": 0.594,
+    "weighted_recall": 0.5913,
+    "weighted_f1": 0.5916,
+    "per_class": {
+      "Negative": {
+        "precision": 0.5901,
+        "recall": 0.5506,
+        "f1": 0.5697,
+        "support": 3972
+      },
+      "Neutral": {
+        "precision": 0.6242,
+        "recall": 0.6067,
+        "f1": 0.6153,
+        "support": 5937
+      },
+      "Positive": {
+        "precision": 0.5251,
+        "recall": 0.6206,
+        "f1": 0.5689,
+        "support": 2375
+      }
+    },
+    "confusion_matrix": [
+      [
+        2187,
+        1462,
+        323
+      ],
+      [
+        1325,
+        3602,
+        1010
+      ],
+      [
+        194,
+        707,
+        1474
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ],
+    "bootstrap_macro_f1": {
+      "metric": "macro_f1",
+      "mean": 0.5847,
+      "ci95_low": 0.576,
+      "ci95_high": 0.5938,
+      "n_boot": 1000
+    },
+    "latency_ms_per_1k": 22.36,
+    "train_seconds": 2.92
+  },
+  "tfidf_word_char_logreg": {
+    "n": 12284,
+    "accuracy": 0.6088,
+    "macro_precision": 0.5984,
+    "macro_recall": 0.6157,
+    "macro_f1": 0.6055,
+    "weighted_precision": 0.6121,
+    "weighted_recall": 0.6088,
+    "weighted_f1": 0.6092,
+    "per_class": {
+      "Negative": {
+        "precision": 0.6018,
+        "recall": 0.6148,
+        "f1": 0.6082,
+        "support": 3972
+      },
+      "Neutral": {
+        "precision": 0.6441,
+        "recall": 0.5922,
+        "f1": 0.6171,
+        "support": 5937
+      },
+      "Positive": {
+        "precision": 0.5493,
+        "recall": 0.64,
+        "f1": 0.5912,
+        "support": 2375
+      }
+    },
+    "confusion_matrix": [
+      [
+        2442,
+        1275,
+        255
+      ],
+      [
+        1429,
+        3516,
+        992
+      ],
+      [
+        187,
+        668,
+        1520
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ],
+    "bootstrap_macro_f1": {
+      "metric": "macro_f1",
+      "mean": 0.6055,
+      "ci95_low": 0.5966,
+      "ci95_high": 0.6139,
+      "n_boot": 1000
+    },
+    "calibration": {
+      "ece": 0.1015,
+      "brier": 0.5223,
+      "reliability": [
+        {
+          "bin_low": 0.3,
+          "bin_high": 0.4,
+          "count": 176,
+          "avg_confidence": 0.3776,
+          "accuracy": 0.3807
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "count": 1353,
+          "avg_confidence": 0.4605,
+          "accuracy": 0.4383
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6,
+          "count": 2291,
+          "avg_confidence": 0.5496,
+          "accuracy": 0.5081
+        },
+        {
+          "bin_low": 0.6,
+          "bin_high": 0.7,
+          "count": 2184,
+          "avg_confidence": 0.65,
+          "accuracy": 0.5536
+        },
+        {
+          "bin_low": 0.7,
+          "bin_high": 0.8,
+          "count": 2071,
+          "avg_confidence": 0.7506,
+          "accuracy": 0.6127
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "count": 2053,
+          "avg_confidence": 0.8505,
+          "accuracy": 0.6922
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "count": 2156,
+          "avg_confidence": 0.9533,
+          "accuracy": 0.814
+        }
+      ]
+    },
+    "latency_ms_per_1k": 137.02,
+    "train_seconds": 21.8
+  },
+  "ablations": [
+    {
+      "name": "aggressive_cleaning",
+      "baseline": "raw (minimal normalisation)",
+      "variant": "aggressive stopword/punctuation cleaning",
+      "baseline_macro_f1": 0.5816,
+      "variant_macro_f1": 0.5627,
+      "delta_macro_f1": -0.0189,
+      "accuracy": 0.5668
+    },
+    {
+      "name": "unigram_only",
+      "baseline": "word 1-2 grams",
+      "variant": "word 1 grams",
+      "baseline_macro_f1": 0.5816,
+      "variant_macro_f1": 0.5737,
+      "delta_macro_f1": -0.0079,
+      "accuracy": 0.5764
+    },
+    {
+      "name": "no_class_weighting",
+      "baseline": "class_weight=balanced",
+      "variant": "class_weight=none",
+      "baseline_macro_f1": 0.5816,
+      "variant_macro_f1": 0.5728,
+      "delta_macro_f1": -0.0088,
+      "accuracy": 0.5914
+    }
+  ],
+  "learning_curve": [
+    {
+      "train_rows": 4561,
+      "fraction": 0.1,
+      "macro_f1": 0.5093,
+      "accuracy": 0.5221
+    },
+    {
+      "train_rows": 11403,
+      "fraction": 0.25,
+      "macro_f1": 0.5479,
+      "accuracy": 0.5552
+    },
+    {
+      "train_rows": 22807,
+      "fraction": 0.5,
+      "macro_f1": 0.5688,
+      "accuracy": 0.573
+    },
+    {
+      "train_rows": 45615,
+      "fraction": 1.0,
+      "macro_f1": 0.585,
+      "accuracy": 0.5891
+    }
+  ],
+  "deployed_linear_model": "tfidf_logreg",
+  "top_coefficients": {
+    "Negative": {
+      "positive": [
+        {
+          "token": "fuck",
+          "weight": 8.8409
+        },
+        {
+          "token": "sad",
+          "weight": 7.3194
+        },
+        {
+          "token": "worst",
+          "weight": 7.018
+        },
+        {
+          "token": "hate",
+          "weight": 6.876
+        },
+        {
+          "token": "stupid",
+          "weight": 6.5464
+        },
+        {
+          "token": "shit",
+          "weight": 6.5011
+        },
+        {
+          "token": "fucking",
+          "weight": 6.5008
+        },
+        {
+          "token": "sucks",
+          "weight": 6.3442
+        },
+        {
+          "token": "not",
+          "weight": 6.2641
+        },
+        {
+          "token": "terrible",
+          "weight": 5.8415
+        },
+        {
+          "token": "worse",
+          "weight": 5.3756
+        },
+        {
+          "token": "don",
+          "weight": 5.2549
+        },
+        {
+          "token": "bitch",
+          "weight": 4.9978
+        },
+        {
+          "token": "bad",
+          "weight": 4.9326
+        },
+        {
+          "token": "ass",
+          "weight": 4.8507
+        },
+        {
+          "token": "disappointed",
+          "weight": 4.8483
+        },
+        {
+          "token": "the worst",
+          "weight": 4.7404
+        },
+        {
+          "token": "lost",
+          "weight": 4.7042
+        },
+        {
+          "token": "erdogan",
+          "weight": 4.6803
+        },
+        {
+          "token": "damn",
+          "weight": 4.5541
+        }
+      ],
+      "negative": [
+        {
+          "token": "love",
+          "weight": -4.998
+        },
+        {
+          "token": "best",
+          "weight": -4.139
+        },
+        {
+          "token": "seinfeld",
+          "weight": -3.9318
+        },
+        {
+          "token": "bad blood",
+          "weight": -3.7593
+        },
+        {
+          "token": "happy",
+          "weight": -3.5283
+        },
+        {
+          "token": "nirvana",
+          "weight": -3.2492
+        },
+        {
+          "token": "amazing",
+          "weight": -3.1872
+        },
+        {
+          "token": "naruto",
+          "weight": -3.1616
+        },
+        {
+          "token": "interesting",
+          "weight": -2.9985
+        },
+        {
+          "token": "hannibal",
+          "weight": -2.9648
+        },
+        {
+          "token": "beautiful",
+          "weight": -2.9006
+        },
+        {
+          "token": "minecraft",
+          "weight": -2.8814
+        },
+        {
+          "token": "shawn",
+          "weight": -2.791
+        },
+        {
+          "token": "thank",
+          "weight": -2.7455
+        },
+        {
+          "token": "federer",
+          "weight": -2.7338
+        },
+        {
+          "token": "great",
+          "weight": -2.7277
+        },
+        {
+          "token": "at",
+          "weight": -2.7192
+        },
+        {
+          "token": "follow",
+          "weight": -2.7158
+        },
+        {
+          "token": "bentley",
+          "weight": -2.7138
+        },
+        {
+          "token": "glad",
+          "weight": -2.6507
+        }
+      ]
+    },
+    "Neutral": {
+      "positive": [
+        {
+          "token": "gucci",
+          "weight": 3.6382
+        },
+        {
+          "token": "shawn",
+          "weight": 3.0651
+        },
+        {
+          "token": "bad blood",
+          "weight": 2.8864
+        },
+        {
+          "token": "do you",
+          "weight": 2.7703
+        },
+        {
+          "token": "is there",
+          "weight": 2.6993
+        },
+        {
+          "token": "nirvana",
+          "weight": 2.6256
+        },
+        {
+          "token": "kane",
+          "weight": 2.5572
+        },
+        {
+          "token": "question",
+          "weight": 2.5248
+        },
+        {
+          "token": "murray",
+          "weight": 2.5041
+        },
+        {
+          "token": "at",
+          "weight": 2.4576
+        },
+        {
+          "token": "ps4",
+          "weight": 2.4362
+        },
+        {
+          "token": "kpop",
+          "weight": 2.4269
+        },
+        {
+          "token": "what time",
+          "weight": 2.4075
+        },
+        {
+          "token": "zayn",
+          "weight": 2.3677
+        },
+        {
+          "token": "park for",
+          "weight": 2.3494
+        },
+        {
+          "token": "nicki",
+          "weight": 2.2638
+        },
+        {
+          "token": "it be",
+          "weight": 2.2627
+        },
+        {
+          "token": "real madrid",
+          "weight": 2.2459
+        },
+        {
+          "token": "yakub",
+          "weight": 2.2234
+        },
+        {
+          "token": "super eagles",
+          "weight": 2.2122
+        }
+      ],
+      "negative": [
+        {
+          "token": "happy",
+          "weight": -6.7113
+        },
+        {
+          "token": "great",
+          "weight": -6.647
+        },
+        {
+          "token": "good",
+          "weight": -5.8459
+        },
+        {
+          "token": "excited",
+          "weight": -5.7825
+        },
+        {
+          "token": "fuck",
+          "weight": -5.7476
+        },
+        {
+          "token": "awesome",
+          "weight": -4.9397
+        },
+        {
+          "token": "love",
+          "weight": -4.7323
+        },
+        {
+          "token": "amazing",
+          "weight": -4.6429
+        },
+        {
+          "token": "brilliant",
+          "weight": -3.8443
+        },
+        {
+          "token": "perfect",
+          "weight": -3.7783
+        },
+        {
+          "token": "fun",
+          "weight": -3.7754
+        },
+        {
+          "token": "u2019t",
+          "weight": -3.7529
+        },
+        {
+          "token": "nice",
+          "weight": -3.7203
+        },
+        {
+          "token": "thanks",
+          "weight": -3.7078
+        },
+        {
+          "token": "fucking",
+          "weight": -3.6169
+        },
+        {
+          "token": "best",
+          "weight": -3.5677
+        },
+        {
+          "token": "shit",
+          "weight": -3.475
+        },
+        {
+          "token": "enjoy",
+          "weight": -3.4055
+        },
+        {
+          "token": "cool",
+          "weight": -3.3315
+        },
+        {
+          "token": "can wait",
+          "weight": -3.3266
+        }
+      ]
+    },
+    "Positive": {
+      "positive": [
+        {
+          "token": "happy",
+          "weight": 10.2396
+        },
+        {
+          "token": "love",
+          "weight": 9.7303
+        },
+        {
+          "token": "great",
+          "weight": 9.3746
+        },
+        {
+          "token": "good",
+          "weight": 8.3697
+        },
+        {
+          "token": "excited",
+          "weight": 7.9293
+        },
+        {
+          "token": "amazing",
+          "weight": 7.8301
+        },
+        {
+          "token": "best",
+          "weight": 7.7067
+        },
+        {
+          "token": "awesome",
+          "weight": 7.0025
+        },
+        {
+          "token": "nice",
+          "weight": 5.9411
+        },
+        {
+          "token": "fun",
+          "weight": 5.6822
+        },
+        {
+          "token": "perfect",
+          "weight": 5.4868
+        },
+        {
+          "token": "beautiful",
+          "weight": 5.4207
+        },
+        {
+          "token": "glad",
+          "weight": 5.151
+        },
+        {
+          "token": "can wait",
+          "weight": 4.9916
+        },
+        {
+          "token": "exciting",
+          "weight": 4.8481
+        },
+        {
+          "token": "cool",
+          "weight": 4.6462
+        },
+        {
+          "token": "brilliant",
+          "weight": 4.6136
+        },
+        {
+          "token": "proud",
+          "weight": 4.4962
+        },
+        {
+          "token": "enjoy",
+          "weight": 4.4101
+        },
+        {
+          "token": "interesting",
+          "weight": 4.3654
+        }
+      ],
+      "negative": [
+        {
+          "token": "not",
+          "weight": -5.2414
+        },
+        {
+          "token": "yakub",
+          "weight": -5.1951
+        },
+        {
+          "token": "sad",
+          "weight": -5.0996
+        },
+        {
+          "token": "worst",
+          "weight": -4.9865
+        },
+        {
+          "token": "hate",
+          "weight": -4.6606
+        },
+        {
+          "token": "muslims",
+          "weight": -4.3588
+        },
+        {
+          "token": "why",
+          "weight": -4.2587
+        },
+        {
+          "token": "didn",
+          "weight": -3.8654
+        },
+        {
+          "token": "erdogan",
+          "weight": -3.7441
+        },
+        {
+          "token": "don",
+          "weight": -3.731
+        },
+        {
+          "token": "terrible",
+          "weight": -3.6584
+        },
+        {
+          "token": "died",
+          "weight": -3.5245
+        },
+        {
+          "token": "stupid",
+          "weight": -3.4745
+        },
+        {
+          "token": "wtf",
+          "weight": -3.3978
+        },
+        {
+          "token": "worse",
+          "weight": -3.3673
+        },
+        {
+          "token": "ira",
+          "weight": -3.1779
+        },
+        {
+          "token": "christians",
+          "weight": -3.1675
+        },
+        {
+          "token": "loss",
+          "weight": -3.1497
+        },
+        {
+          "token": "lost",
+          "weight": -3.1397
+        },
+        {
+          "token": "fuck",
+          "weight": -3.0934
+        }
+      ]
+    }
+  },
+  "error_examples": [
+    {
+      "text": "Happy Black Friday idiot hookers love Chanel Oberlin 💋 #ScreamQueens #BlackFriday",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9985
+    },
+    {
+      "text": "Happy <user> oppression day",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9967
+    },
+    {
+      "text": "Cubs fuck horny ass cougars",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9964
+    },
+    {
+      "text": "Is this the best George soros could come up lots of love",
+      "gold": "Negative",
+      "predicted": "Positive",
+      "confidence": 0.9936
+    },
+    {
+      "text": "#Deplorables = ;-) #RockNRoll !#JoanJett & the #Blackhearts -I #Love #RockNRoll via <user>",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9936
+    },
+    {
+      "text": "Good Food's most popular recipes 2016: Best chicken recipes, vegetarian… #Recipe #GoodFood…",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9935
+    },
+    {
+      "text": "<user> <user> if people don't consider selfs Americans, citizens liberals, democrats, Trump not their Pres.",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9917
+    },
+    {
+      "text": "#stop killing #civilians in #Syria #Russia #unitednations",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9916
+    },
+    {
+      "text": "NICE! It's all about the #innercity. | \"..to making our inner cities great for everyone..\"- <user> #Riots",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9913
+    },
+    {
+      "text": "Messi: \"To have a good team, everything starts there\" #fcblive",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9888
+    },
+    {
+      "text": "<user> <user> count them for what?? Why don't you worry about voter registration fraud?? That's where the fraud is going on",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9884
+    },
+    {
+      "text": "<user> I'm totally looking forward to Yakuza 0 and Persona 5! But after XII I'm not sure I can ever love again",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9872
+    },
+    {
+      "text": "<user> <user> <user> <user> <user> <user> <user> I thot \"bad hombres\" was racist now.",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9871
+    },
+    {
+      "text": "#VanessaHartley Hating people because of their color is wrong & it doesnt matter which color does the hating. Its plain wrong- Muhammad Ali",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9868
+    },
+    {
+      "text": "<user> perfect <user>",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9851
+    },
+    {
+      "text": "So Fidel is dead, but can someone enlighten me as to what's next?? Venezuelans rejoiced when Chavez died, but Maduro's just as bad/worse.",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.985
+    },
+    {
+      "text": "I really can fucking not with ep. 4 #ScreamQueens 😂😂😥 this is nuts!!",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9838
+    },
+    {
+      "text": "2. Yes ..crime can never be justified but if you are going to give death penalty to kidnappers why not corrupt politicians/looters?",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9826
+    },
+    {
+      "text": "#ISIS claims Iraq car-bombing, at least 73 killed.",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9825
+    },
+    {
+      "text": "Bannon( <url> \"It's the greatest opportunity to rebuild everything..as exciting as the 1930s.\" O…",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9817
+    },
+    {
+      "text": "#NeilPrakash, #Australia's most senior #ISIS recruiter has been arrested in the Middle East, months after the..",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9815
+    },
+    {
+      "text": "Well sorry Obama and Dems-there's a new Sheriff in town and he won't allow that stupid crap! #TrumpsTheMan",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9813
+    },
+    {
+      "text": "I mean. He won't try to kill her and that's probably the worse thing for him. #Westworld",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.981
+    },
+    {
+      "text": "<user> good, keep them away from the deplorables. Thank you President Obama for 8 years of peace. #trumplandia #dumptrump",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.9789
+    },
+    {
+      "text": "Missed #NationalFastFoodDay, but righting that wrong now.#McDonalds small fry & a cheeseburger.I know, doesn't even really count as ff.",
+      "gold": "Neutral",
+      "predicted": "Negative",
+      "confidence": 0.9776
+    }
+  ],
+  "domain_shift": {
+    "X/Twitter": {
+      "n": 20000,
+      "neutral_prediction_rate": 0.2547,
+      "coverage_binary": 0.7452,
+      "binary_accuracy_on_covered": 0.729,
+      "binary_macro_f1_on_covered": 0.7273,
+      "binary_gold_n": 14905,
+      "gold_distribution": {
+        "Negative": 10006,
+        "Positive": 9994
+      }
+    },
+    "Reddit": {
+      "n": 20000,
+      "neutral_prediction_rate": 0.2264,
+      "coverage_binary": 0.4925,
+      "binary_accuracy_on_covered": 0.7985,
+      "binary_macro_f1_on_covered": 0.793,
+      "binary_gold_n": 9850,
+      "gold_distribution": {
+        "Neutral": 8684,
+        "Positive": 7293,
+        "Negative": 4023
+      }
+    }
+  },
+  "dataset": {
+    "name": "TweetEval sentiment",
+    "train_rows": 45615,
+    "test_rows": 12284,
+    "labels": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ],
+    "train_distribution": {
+      "Neutral": 20673,
+      "Positive": 17849,
+      "Negative": 7093
+    },
+    "test_distribution": {
+      "Neutral": 5937,
+      "Negative": 3972,
+      "Positive": 2375
+    }
+  },
+  "environment": {
+    "seed": 42,
+    "python": "3.12.10",
+    "sklearn": "1.8.0",
+    "pandas": "2.3.3",
+    "numpy": "2.3.5"
+  }
+}

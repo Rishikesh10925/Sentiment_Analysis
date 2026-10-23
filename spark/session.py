@@ -9,6 +9,7 @@ run entirely inside the JVM without needing a Python worker subprocess.
 """
 
 import os
+import sys
 from pathlib import Path
 
 from pyspark.sql import SparkSession
@@ -29,12 +30,18 @@ def get_spark_session(app_name: str = "social-media-sentiment") -> SparkSession:
         if bundled:
             os.environ["JAVA_HOME"] = str(bundled)
     os.environ.setdefault("SPARK_LOCAL_IP", "127.0.0.1")
+    # On Windows the bare "python" launcher may resolve to the Microsoft
+    # Store alias. Pin the interpreter for the deliberately naive UDF
+    # benchmark; the production Spark jobs remain UDF-free.
+    os.environ.setdefault("PYSPARK_PYTHON", sys.executable)
+    os.environ.setdefault("PYSPARK_DRIVER_PYTHON", sys.executable)
 
     return (
         SparkSession.builder.appName(app_name)
         .master("local[*]")
         .config("spark.ui.enabled", "false")
         .config("spark.driver.host", "127.0.0.1")
+        .config("spark.driver.memory", os.environ.get("SPARK_DRIVER_MEMORY", "4g"))
         .config("spark.sql.shuffle.partitions", "4")  # small demo dataset; default 200 is overkill
         .getOrCreate()
     )

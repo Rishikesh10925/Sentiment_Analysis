@@ -1,0 +1,85 @@
+{
+  "environment": {
+    "spark": "4.0.4",
+    "java": "17.0.20.1",
+    "logical_cores": 24,
+    "driver_memory": "4g",
+    "repeats": 1,
+    "seed": 42,
+    "sample_strategy": "in-memory seeded sample; not written to disk (Windows winutils-free)"
+  },
+  "runs": [
+    {
+      "rows": 100000,
+      "method": "naive",
+      "seconds": 3.728,
+      "rows_per_second": 26825.8,
+      "aggregate_rows": 100,
+      "shuffle_partitions": 200,
+      "repeat_times": [
+        3.728
+      ]
+    },
+    {
+      "rows": 100000,
+      "method": "optimized",
+      "seconds": 3.563,
+      "rows_per_second": 28066.7,
+      "aggregate_rows": 100,
+      "shuffle_partitions": 16,
+      "repeat_times": [
+        3.563
+      ],
+      "matches_naive": true,
+      "speedup_vs_naive": 1.05
+    },
+    {
+      "rows": 500000,
+      "method": "naive",
+      "seconds": 3.966,
+      "rows_per_second": 126060.5,
+      "aggregate_rows": 102,
+      "shuffle_partitions": 200,
+      "repeat_times": [
+        3.966
+      ]
+    },
+    {
+      "rows": 500000,
+      "method": "optimized",
+      "seconds": 6.676,
+      "rows_per_second": 74899.4,
+      "aggregate_rows": 102,
+      "shuffle_partitions": 16,
+      "repeat_times": [
+        6.676
+      ],
+      "matches_naive": true,
+      "speedup_vs_naive": 0.59
+    },
+    {
+      "rows": 1600000,
+      "method": "naive",
+      "seconds": 7.688,
+      "rows_per_second": 208119.9,
+      "aggregate_rows": 102,
+      "shuffle_partitions": 200,
+      "repeat_times": [
+        7.688
+      ]
+    },
+    {
+      "rows": 1600000,
+      "method": "optimized",
+      "seconds": 18.675,
+      "rows_per_second": 85678.0,
+      "aggregate_rows": 102,
+      "shuffle_partitions": 16,
+      "repeat_times": [
+        18.675
+      ],
+      "matches_naive": true,
+      "speedup_vs_naive": 0.41
+    }
+  ]
+}

@@ -1,0 +1,785 @@
+{
+  "available": true,
+  "task": "SemEval-2014 Task 4 aspect-term polarity classification",
+  "input": "sentence + gold aspect term",
+  "dataset": {
+    "train_rows": 5921,
+    "test_rows": 1758,
+    "aspect_terms": 2280,
+    "train_by_domain": {
+      "laptops": 2313,
+      "restaurants": 3608
+    },
+    "test_by_domain": {
+      "laptops": 638,
+      "restaurants": 1120
+    },
+    "label_distribution": {
+      "train": {
+        "Negative": 1673,
+        "Neutral": 1097,
+        "Positive": 3151
+      },
+      "test": {
+        "Negative": 324,
+        "Neutral": 365,
+        "Positive": 1069
+      }
+    }
+  },
+  "model": {
+    "name": "tfidf_word_char_logreg",
+    "features": "word 1-2 grams + char_wb 3-5 grams",
+    "class_weight": "balanced"
+  },
+  "models": {
+    "majority": {
+      "n": 1758,
+      "accuracy": 0.6081,
+      "macro_precision": 0.2027,
+      "macro_recall": 0.3333,
+      "macro_f1": 0.2521,
+      "weighted_precision": 0.3698,
+      "weighted_recall": 0.6081,
+      "weighted_f1": 0.4599,
+      "per_class": {
+        "Negative": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 324
+        },
+        "Neutral": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 365
+        },
+        "Positive": {
+          "precision": 0.6081,
+          "recall": 1.0,
+          "f1": 0.7563,
+          "support": 1069
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          324
+        ],
+        [
+          0,
+          0,
+          365
+        ],
+        [
+          0,
+          0,
+          1069
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "Negative",
+        "Neutral",
+        "Positive"
+      ],
+      "bootstrap_macro_f1": {
+        "metric": "macro_f1",
+        "mean": 0.2522,
+        "ci95_low": 0.2464,
+        "ci95_high": 0.2579,
+        "n_boot": 1000
+      }
+    },
+    "tfidf_word_char_logreg": {
+      "n": 1758,
+      "accuracy": 0.711,
+      "macro_precision": 0.6219,
+      "macro_recall": 0.6115,
+      "macro_f1": 0.6106,
+      "weighted_precision": 0.699,
+      "weighted_recall": 0.711,
+      "weighted_f1": 0.701,
+      "per_class": {
+        "Negative": {
+          "precision": 0.5418,
+          "recall": 0.6204,
+          "f1": 0.5784,
+          "support": 324
+        },
+        "Neutral": {
+          "precision": 0.5139,
+          "recall": 0.3534,
+          "f1": 0.4188,
+          "support": 365
+        },
+        "Positive": {
+          "precision": 0.8099,
+          "recall": 0.8606,
+          "f1": 0.8345,
+          "support": 1069
+        }
+      },
+      "confusion_matrix": [
+        [
+          201,
+          52,
+          71
+        ],
+        [
+          91,
+          129,
+          145
+        ],
+        [
+          79,
+          70,
+          920
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "Negative",
+        "Neutral",
+        "Positive"
+      ],
+      "bootstrap_macro_f1": {
+        "metric": "macro_f1",
+        "mean": 0.6101,
+        "ci95_low": 0.5836,
+        "ci95_high": 0.6345,
+        "n_boot": 1000
+      },
+      "calibration": {
+        "ece": 0.0452,
+        "brier": 0.4002,
+        "reliability": [
+          {
+            "bin_low": 0.3,
+            "bin_high": 0.4,
+            "count": 23,
+            "avg_confidence": 0.3775,
+            "accuracy": 0.3913
+          },
+          {
+            "bin_low": 0.4,
+            "bin_high": 0.5,
+            "count": 163,
+            "avg_confidence": 0.4612,
+            "accuracy": 0.4479
+          },
+          {
+            "bin_low": 0.5,
+            "bin_high": 0.6,
+            "count": 251,
+            "avg_confidence": 0.5481,
+            "accuracy": 0.506
+          },
+          {
+            "bin_low": 0.6,
+            "bin_high": 0.7,
+            "count": 255,
+            "avg_confidence": 0.6483,
+            "accuracy": 0.5922
+          },
+          {
+            "bin_low": 0.7,
+            "bin_high": 0.8,
+            "count": 222,
+            "avg_confidence": 0.7531,
+            "accuracy": 0.6486
+          },
+          {
+            "bin_low": 0.8,
+            "bin_high": 0.9,
+            "count": 307,
+            "avg_confidence": 0.8528,
+            "accuracy": 0.798
+          },
+          {
+            "bin_low": 0.9,
+            "bin_high": 1.0,
+            "count": 537,
+            "avg_confidence": 0.9554,
+            "accuracy": 0.933
+          }
+        ]
+      }
+    }
+  },
+  "train_seconds": 3.47,
+  "inference_seconds": 0.306,
+  "latency_ms_per_1k": 173.85,
+  "macro_f1": 0.6106,
+  "accuracy": 0.711,
+  "restaurants": {
+    "n": 1120,
+    "accuracy": 0.7277,
+    "macro_precision": 0.6108,
+    "macro_recall": 0.5919,
+    "macro_f1": 0.5992,
+    "weighted_precision": 0.7118,
+    "weighted_recall": 0.7277,
+    "weighted_f1": 0.7182,
+    "per_class": {
+      "Negative": {
+        "precision": 0.5767,
+        "recall": 0.5561,
+        "f1": 0.5662,
+        "support": 196
+      },
+      "Neutral": {
+        "precision": 0.4323,
+        "recall": 0.3418,
+        "f1": 0.3818,
+        "support": 196
+      },
+      "Positive": {
+        "precision": 0.8235,
+        "recall": 0.8777,
+        "f1": 0.8497,
+        "support": 728
+      }
+    },
+    "confusion_matrix": [
+      [
+        109,
+        44,
+        43
+      ],
+      [
+        35,
+        67,
+        94
+      ],
+      [
+        45,
+        44,
+        639
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ],
+    "bootstrap_macro_f1": {
+      "metric": "macro_f1",
+      "mean": 0.598,
+      "ci95_low": 0.5632,
+      "ci95_high": 0.6308,
+      "n_boot": 1000
+    },
+    "calibration": {
+      "ece": 0.0444,
+      "brier": 0.3756,
+      "reliability": [
+        {
+          "bin_low": 0.3,
+          "bin_high": 0.4,
+          "count": 17,
+          "avg_confidence": 0.3789,
+          "accuracy": 0.4118
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "count": 95,
+          "avg_confidence": 0.4648,
+          "accuracy": 0.4316
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6,
+          "count": 144,
+          "avg_confidence": 0.5467,
+          "accuracy": 0.4861
+        },
+        {
+          "bin_low": 0.6,
+          "bin_high": 0.7,
+          "count": 147,
+          "avg_confidence": 0.6511,
+          "accuracy": 0.5714
+        },
+        {
+          "bin_low": 0.7,
+          "bin_high": 0.8,
+          "count": 129,
+          "avg_confidence": 0.7552,
+          "accuracy": 0.6899
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "count": 209,
+          "avg_confidence": 0.8549,
+          "accuracy": 0.8086
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "count": 379,
+          "avg_confidence": 0.9565,
+          "accuracy": 0.9367
+        }
+      ]
+    }
+  },
+  "by_domain": {
+    "restaurants": {
+      "n": 1120,
+      "accuracy": 0.7277,
+      "macro_precision": 0.6108,
+      "macro_recall": 0.5919,
+      "macro_f1": 0.5992,
+      "weighted_precision": 0.7118,
+      "weighted_recall": 0.7277,
+      "weighted_f1": 0.7182,
+      "per_class": {
+        "Negative": {
+          "precision": 0.5767,
+          "recall": 0.5561,
+          "f1": 0.5662,
+          "support": 196
+        },
+        "Neutral": {
+          "precision": 0.4323,
+          "recall": 0.3418,
+          "f1": 0.3818,
+          "support": 196
+        },
+        "Positive": {
+          "precision": 0.8235,
+          "recall": 0.8777,
+          "f1": 0.8497,
+          "support": 728
+        }
+      },
+      "confusion_matrix": [
+        [
+          109,
+          44,
+          43
+        ],
+        [
+          35,
+          67,
+          94
+        ],
+        [
+          45,
+          44,
+          639
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "Negative",
+        "Neutral",
+        "Positive"
+      ],
+      "bootstrap_macro_f1": {
+        "metric": "macro_f1",
+        "mean": 0.598,
+        "ci95_low": 0.5632,
+        "ci95_high": 0.6308,
+        "n_boot": 1000
+      },
+      "calibration": {
+        "ece": 0.0444,
+        "brier": 0.3756,
+        "reliability": [
+          {
+            "bin_low": 0.3,
+            "bin_high": 0.4,
+            "count": 17,
+            "avg_confidence": 0.3789,
+            "accuracy": 0.4118
+          },
+          {
+            "bin_low": 0.4,
+            "bin_high": 0.5,
+            "count": 95,
+            "avg_confidence": 0.4648,
+            "accuracy": 0.4316
+          },
+          {
+            "bin_low": 0.5,
+            "bin_high": 0.6,
+            "count": 144,
+            "avg_confidence": 0.5467,
+            "accuracy": 0.4861
+          },
+          {
+            "bin_low": 0.6,
+            "bin_high": 0.7,
+            "count": 147,
+            "avg_confidence": 0.6511,
+            "accuracy": 0.5714
+          },
+          {
+            "bin_low": 0.7,
+            "bin_high": 0.8,
+            "count": 129,
+            "avg_confidence": 0.7552,
+            "accuracy": 0.6899
+          },
+          {
+            "bin_low": 0.8,
+            "bin_high": 0.9,
+            "count": 209,
+            "avg_confidence": 0.8549,
+            "accuracy": 0.8086
+          },
+          {
+            "bin_low": 0.9,
+            "bin_high": 1.0,
+            "count": 379,
+            "avg_confidence": 0.9565,
+            "accuracy": 0.9367
+          }
+        ]
+      }
+    },
+    "laptops": {
+      "n": 638,
+      "accuracy": 0.6818,
+      "macro_precision": 0.644,
+      "macro_recall": 0.6366,
+      "macro_f1": 0.6211,
+      "weighted_precision": 0.6897,
+      "weighted_recall": 0.6818,
+      "weighted_f1": 0.6715,
+      "per_class": {
+        "Negative": {
+          "precision": 0.5055,
+          "recall": 0.7188,
+          "f1": 0.5935,
+          "support": 128
+        },
+        "Neutral": {
+          "precision": 0.6458,
+          "recall": 0.3669,
+          "f1": 0.4679,
+          "support": 169
+        },
+        "Positive": {
+          "precision": 0.7806,
+          "recall": 0.824,
+          "f1": 0.8017,
+          "support": 341
+        }
+      },
+      "confusion_matrix": [
+        [
+          92,
+          8,
+          28
+        ],
+        [
+          56,
+          62,
+          51
+        ],
+        [
+          34,
+          26,
+          281
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "Negative",
+        "Neutral",
+        "Positive"
+      ],
+      "bootstrap_macro_f1": {
+        "metric": "macro_f1",
+        "mean": 0.6195,
+        "ci95_low": 0.5799,
+        "ci95_high": 0.659,
+        "n_boot": 1000
+      },
+      "calibration": {
+        "ece": 0.0504,
+        "brier": 0.4432,
+        "reliability": [
+          {
+            "bin_low": 0.3,
+            "bin_high": 0.4,
+            "count": 6,
+            "avg_confidence": 0.3734,
+            "accuracy": 0.3333
+          },
+          {
+            "bin_low": 0.4,
+            "bin_high": 0.5,
+            "count": 68,
+            "avg_confidence": 0.456,
+            "accuracy": 0.4706
+          },
+          {
+            "bin_low": 0.5,
+            "bin_high": 0.6,
+            "count": 107,
+            "avg_confidence": 0.5499,
+            "accuracy": 0.5327
+          },
+          {
+            "bin_low": 0.6,
+            "bin_high": 0.7,
+            "count": 108,
+            "avg_confidence": 0.6446,
+            "accuracy": 0.6204
+          },
+          {
+            "bin_low": 0.7,
+            "bin_high": 0.8,
+            "count": 93,
+            "avg_confidence": 0.7503,
+            "accuracy": 0.5914
+          },
+          {
+            "bin_low": 0.8,
+            "bin_high": 0.9,
+            "count": 98,
+            "avg_confidence": 0.8483,
+            "accuracy": 0.7755
+          },
+          {
+            "bin_low": 0.9,
+            "bin_high": 1.0,
+            "count": 158,
+            "avg_confidence": 0.9527,
+            "accuracy": 0.9241
+          }
+        ]
+      }
+    }
+  },
+  "laptops": {
+    "n": 638,
+    "accuracy": 0.6818,
+    "macro_precision": 0.644,
+    "macro_recall": 0.6366,
+    "macro_f1": 0.6211,
+    "weighted_precision": 0.6897,
+    "weighted_recall": 0.6818,
+    "weighted_f1": 0.6715,
+    "per_class": {
+      "Negative": {
+        "precision": 0.5055,
+        "recall": 0.7188,
+        "f1": 0.5935,
+        "support": 128
+      },
+      "Neutral": {
+        "precision": 0.6458,
+        "recall": 0.3669,
+        "f1": 0.4679,
+        "support": 169
+      },
+      "Positive": {
+        "precision": 0.7806,
+        "recall": 0.824,
+        "f1": 0.8017,
+        "support": 341
+      }
+    },
+    "confusion_matrix": [
+      [
+        92,
+        8,
+        28
+      ],
+      [
+        56,
+        62,
+        51
+      ],
+      [
+        34,
+        26,
+        281
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "Negative",
+      "Neutral",
+      "Positive"
+    ],
+    "bootstrap_macro_f1": {
+      "metric": "macro_f1",
+      "mean": 0.6195,
+      "ci95_low": 0.5799,
+      "ci95_high": 0.659,
+      "n_boot": 1000
+    },
+    "calibration": {
+      "ece": 0.0504,
+      "brier": 0.4432,
+      "reliability": [
+        {
+          "bin_low": 0.3,
+          "bin_high": 0.4,
+          "count": 6,
+          "avg_confidence": 0.3734,
+          "accuracy": 0.3333
+        },
+        {
+          "bin_low": 0.4,
+          "bin_high": 0.5,
+          "count": 68,
+          "avg_confidence": 0.456,
+          "accuracy": 0.4706
+        },
+        {
+          "bin_low": 0.5,
+          "bin_high": 0.6,
+          "count": 107,
+          "avg_confidence": 0.5499,
+          "accuracy": 0.5327
+        },
+        {
+          "bin_low": 0.6,
+          "bin_high": 0.7,
+          "count": 108,
+          "avg_confidence": 0.6446,
+          "accuracy": 0.6204
+        },
+        {
+          "bin_low": 0.7,
+          "bin_high": 0.8,
+          "count": 93,
+          "avg_confidence": 0.7503,
+          "accuracy": 0.5914
+        },
+        {
+          "bin_low": 0.8,
+          "bin_high": 0.9,
+          "count": 98,
+          "avg_confidence": 0.8483,
+          "accuracy": 0.7755
+        },
+        {
+          "bin_low": 0.9,
+          "bin_high": 1.0,
+          "count": 158,
+          "avg_confidence": 0.9527,
+          "accuracy": 0.9241
+        }
+      ]
+    }
+  },
+  "cross_domain": {
+    "restaurants_to_laptops": {
+      "n": 638,
+      "accuracy": 0.569,
+      "macro_precision": 0.5328,
+      "macro_recall": 0.4891,
+      "macro_f1": 0.4657,
+      "weighted_precision": 0.5764,
+      "weighted_recall": 0.569,
+      "weighted_f1": 0.5358,
+      "per_class": {
+        "Negative": {
+          "precision": 0.3687,
+          "recall": 0.5156,
+          "f1": 0.43,
+          "support": 128
+        },
+        "Neutral": {
+          "precision": 0.5745,
+          "recall": 0.1598,
+          "f1": 0.25,
+          "support": 169
+        },
+        "Positive": {
+          "precision": 0.6553,
+          "recall": 0.7918,
+          "f1": 0.7171,
+          "support": 341
+        }
+      },
+      "confusion_matrix": [
+        [
+          66,
+          11,
+          51
+        ],
+        [
+          51,
+          27,
+          91
+        ],
+        [
+          62,
+          9,
+          270
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "Negative",
+        "Neutral",
+        "Positive"
+      ]
+    },
+    "laptops_to_restaurants": {
+      "n": 1120,
+      "accuracy": 0.608,
+      "macro_precision": 0.4408,
+      "macro_recall": 0.4759,
+      "macro_f1": 0.4191,
+      "weighted_precision": 0.6088,
+      "weighted_recall": 0.608,
+      "weighted_f1": 0.5876,
+      "per_class": {
+        "Negative": {
+          "precision": 0.3157,
+          "recall": 0.6378,
+          "f1": 0.4223,
+          "support": 196
+        },
+        "Neutral": {
+          "precision": 0.2121,
+          "recall": 0.0357,
+          "f1": 0.0611,
+          "support": 196
+        },
+        "Positive": {
+          "precision": 0.7945,
+          "recall": 0.7541,
+          "f1": 0.7738,
+          "support": 728
+        }
+      },
+      "confusion_matrix": [
+        [
+          125,
+          16,
+          55
+        ],
+        [
+          102,
+          7,
+          87
+        ],
+        [
+          169,
+          10,
+          549
+        ]
+      ],
+      "confusion_matrix_labels": [
+        "Negative",
+        "Neutral",
+        "Positive"
+      ]
+    }
+  },
+  "limitations": [
+    "Aspect terms are provided at test time; this measures polarity classification, not extraction.",
+    "SemEval-2014 is restaurant/laptop reviews, not social media; results do not transfer automatically.",
+    "Neutral is a minority class and per-class recall is reported rather than hidden by macro-F1.",
+    "A single train/test split is used; confidence intervals reflect test sampling, not training variance."
+  ]
+}

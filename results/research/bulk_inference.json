@@ -1,0 +1,13 @@
+{
+  "rows": 1646816,
+  "seconds": 81.96,
+  "rows_per_second": 20094.1,
+  "distribution": {
+    "Negative": 518525,
+    "Neutral": 416465,
+    "Positive": 711826
+  },
+  "model": "tfidf_logreg_word12",
+  "batch_size": 100000,
+  "output": "E:\\Sentiment\\data\\curated\\social_posts_predictions.parquet"
+}

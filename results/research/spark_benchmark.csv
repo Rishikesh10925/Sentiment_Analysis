@@ -1,0 +1,7 @@
+rows,method,seconds,rows_per_second,aggregate_rows,shuffle_partitions,repeat_times,matches_naive,speedup_vs_naive
+100000,naive,3.728,26825.8,100,200,[3.728],,
+100000,optimized,3.563,28066.7,100,16,[3.563],True,1.05
+500000,naive,3.966,126060.5,102,200,[3.966],,
+500000,optimized,6.676,74899.4,102,16,[6.676],True,0.59
+1600000,naive,7.688,208119.9,102,200,[7.688],,
+1600000,optimized,18.675,85678.0,102,16,[18.675],True,0.41

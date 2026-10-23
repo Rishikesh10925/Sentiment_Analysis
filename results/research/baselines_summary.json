@@ -1,0 +1,44 @@
+{
+  "majority": {
+    "n": 12284,
+    "accuracy": 0.4833,
+    "macro_f1": 0.2172,
+    "weighted_f1": 0.315,
+    "train_seconds": 0.01
+  },
+  "tfidf_logreg": {
+    "n": 12284,
+    "accuracy": 0.5856,
+    "macro_f1": 0.5816,
+    "weighted_f1": 0.5862,
+    "train_seconds": 8.92
+  },
+  "tfidf_multinomial_nb": {
+    "n": 12284,
+    "accuracy": 0.5578,
+    "macro_f1": 0.5029,
+    "weighted_f1": 0.521,
+    "train_seconds": 2.26
+  },
+  "tfidf_complement_nb": {
+    "n": 12284,
+    "accuracy": 0.566,
+    "macro_f1": 0.5661,
+    "weighted_f1": 0.5655,
+    "train_seconds": 2.25
+  },
+  "tfidf_linear_svc": {
+    "n": 12284,
+    "accuracy": 0.5913,
+    "macro_f1": 0.5846,
+    "weighted_f1": 0.5916,
+    "train_seconds": 2.92
+  },
+  "tfidf_word_char_logreg": {
+    "n": 12284,
+    "accuracy": 0.6088,
+    "macro_f1": 0.6055,
+    "weighted_f1": 0.6092,
+    "train_seconds": 21.8
+  }
+}

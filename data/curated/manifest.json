@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-10-23T04:33:14.276893+00:00",
+  "seed": 42,
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "output": "data\\curated\\social_posts.parquet",
+  "rows": 1646816,
+  "rows_by_platform": {
+    "X/Twitter": 1598315,
+    "Reddit": 48501
+  },
+  "rows_by_gold_sentiment": {
+    "Positive": 816296,
+    "Negative": 809474,
+    "Neutral": 21046
+  },
+  "rows_by_topic": {
+    "General": 1358110,
+    "Entertainment": 60388,
+    "Relationships": 35682,
+    "Education": 35426,
+    "Product": 30065,
+    "Health": 23481,
+    "Technology": 20265,
+    "Performance": 15585,
+    "Delivery": 14057,
+    "Sports": 11018,
+    "Support": 10143,
+    "Finance": 6912,
+    "Science": 6684,
+    "Pricing": 5931,
+    "UX": 5815,
+    "Politics": 5193,
+    "Gaming": 2061
+  },
+  "date_range": {
+    "min": "2009-04-06 22:19:45",
+    "max": "2019-02-01 00:00:00"
+  },
+  "columns": [
+    "id",
+    "platform",
+    "post_id",
+    "author",
+    "text",
+    "date",
+    "topic",
+    "hashtags",
+    "clean_text",
+    "gold_sentiment"
+  ],
+  "sources": [
+    {
+      "name": "Sentiment140",
+      "citation": "Go, Bhayani & Huang (2009), Twitter Sentiment Classification using Distant Supervision",
+      "url": "https://huggingface.co/datasets/BrianLeung/sentiment140-csv",
+      "local_file": "data\\real\\sentiment140\\Sentiment140.csv",
+      "sha256": "b0afc6e9f2b4deb894f73a6f172ac3af3ae36663d4a5b89423efd5a602434e0d",
+      "usage": "Large-scale X/Twitter corpus; distant labels (binary)."
+    },
+    {
+      "name": "GoEmotions (raw)",
+      "citation": "Demszky et al. (2020), GoEmotions: A Dataset of Fine-Grained Emotions",
+      "url": "https://huggingface.co/datasets/google-research-datasets/go_emotions",
+      "local_file": "data\\real\\go_emotions\\raw_train.parquet",
+      "sha256": "5de61486d0b557920f960cbe8b7579f51cdea2d80e74cf647b583967a3642a68",
+      "usage": "Reddit comments; 27 emotions collapsed to 3-way polarity by majority rater label."
+    },
+    {
+      "name": "TweetEval sentiment",
+      "citation": "Barbieri et al. (2020), TweetEval: Unified Benchmark and Comparative Evaluation for Tweet Classification",
+      "url": "https://huggingface.co/datasets/cardiffnlp/tweet_eval",
+      "local_dir": "data\\real\\tweet_eval",
+      "usage": "Held-out 3-class benchmark for model comparison (not loaded into the dashboard)."
+    }
+  ],
+  "notes": [
+    "Dates come from the source records; Sentiment140 is 2009-2010 and GoEmotions is 2019.",
+    "Topic tags are rule-based (research/data.py) and documented in docs/RESEARCH.md.",
+    "Gold labels are retained for evaluation only; the dashboard shows model predictions.",
+    "No tweets are redistributed; the downloader fetches public research datasets."
+  ],
+  "args": {
+    "max_tweets": null,
+    "no_reddit": false,
+    "output": "data/curated/social_posts.parquet"
+  }
+}

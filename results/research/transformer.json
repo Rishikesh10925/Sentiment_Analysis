@@ -1,0 +1,247 @@
+{
+  "n": 12284,
+  "accuracy": 0.4638,
+  "macro_precision": 0.5218,
+  "macro_recall": 0.5296,
+  "macro_f1": 0.4646,
+  "weighted_precision": 0.5601,
+  "weighted_recall": 0.4638,
+  "weighted_f1": 0.4641,
+  "per_class": {
+    "Negative": {
+      "precision": 0.6504,
+      "recall": 0.3696,
+      "f1": 0.4713,
+      "support": 3972
+    },
+    "Neutral": {
+      "precision": 0.5963,
+      "recall": 0.3743,
+      "f1": 0.4599,
+      "support": 5937
+    },
+    "Positive": {
+      "precision": 0.3185,
+      "recall": 0.8451,
+      "f1": 0.4627,
+      "support": 2375
+    }
+  },
+  "confusion_matrix": [
+    [
+      1468,
+      1224,
+      1280
+    ],
+    [
+      701,
+      2222,
+      3014
+    ],
+    [
+      88,
+      280,
+      2007
+    ]
+  ],
+  "confusion_matrix_labels": [
+    "Negative",
+    "Neutral",
+    "Positive"
+  ],
+  "bootstrap_macro_f1": {
+    "metric": "macro_f1",
+    "mean": 0.4647,
+    "ci95_low": 0.4551,
+    "ci95_high": 0.4734,
+    "n_boot": 1000
+  },
+  "calibration": {
+    "ece": 0.1135,
+    "brier": 0.6535,
+    "reliability": [
+      {
+        "bin_low": 0.3,
+        "bin_high": 0.4,
+        "count": 12282,
+        "avg_confidence": 0.3502,
+        "accuracy": 0.4637
+      },
+      {
+        "bin_low": 0.4,
+        "bin_high": 0.5,
+        "count": 2,
+        "avg_confidence": 0.4058,
+        "accuracy": 1.0
+      }
+    ]
+  },
+  "train_seconds": 38.31,
+  "inference_seconds": 92.16,
+  "latency_ms_per_1k": 7502.67,
+  "device": "cpu",
+  "base_model": "distilbert-base-uncased",
+  "epochs": 1,
+  "max_len": 64,
+  "batch_size": 32,
+  "train_rows": 600,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.0903,
+      "val_macro_f1": 0.4411
+    }
+  ],
+  "error_examples": [
+    {
+      "text": "The latest shiny new toy in the #VirtualReality world: Google Earth #VR!",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3892
+    },
+    {
+      "text": "#FantasticBeasts for my last day visiting #chicago",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3881
+    },
+    {
+      "text": "Tinkercad 3D Printing Tutorial: How to Create Your First 3D Print #3DPrinting",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3868
+    },
+    {
+      "text": "Read the first chapter of <user> THE UNDERGROUND RAILROAD, Winner of the 2016 #NBAwards for Fiction",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3859
+    },
+    {
+      "text": "Ricky Martin-Stop time tonight",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3836
+    },
+    {
+      "text": "MY LIFE by Fidel Castro <url> #books #MyLife",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3834
+    },
+    {
+      "text": "Okay, <user> I think I've got my #GilmoreGirlsTop4: Max, Jess, Luke, Sookie",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3828
+    },
+    {
+      "text": "How to be fierce with zac efron #part6 (THANK YOU <user> !) (Vine by <user>",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3827
+    },
+    {
+      "text": "Not too late to enjoy #thanksgiving! Buy your fave #sextoys @ using discount coupon codes <user>",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3827
+    },
+    {
+      "text": "Gaston and Belle in a New Beauty and the Beast Photo #Disney #BeautyAndTheBeast",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3824
+    },
+    {
+      "text": "Our #hatchimal needs a new home in time for Christmas! Keep an eye on our Facebook page this weekend.. #Hatchimals",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3818
+    },
+    {
+      "text": "#ZaynMalik VOGUE May 2016 TAYLOR SWIFT ~ Gigi Hadid & Zayn Malik #OneDirection #Zayne",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3817
+    },
+    {
+      "text": "Ric Flair & Muhammad Ali",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3812
+    },
+    {
+      "text": "The week's top fashion moments on Instagram, like <user> rocking <user>",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3812
+    },
+    {
+      "text": "How will you spend your courage? Jane Mead reads from WORLD OF MADE AND UNMADE. #NBAwards #MiamiBookFair2016",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.381
+    },
+    {
+      "text": "#MUSIC #ArianaGrande <user> PM16:00Ariana Grande - Baby I",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3809
+    },
+    {
+      "text": "Introduction to 3D Printing #3D #Printing",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3807
+    },
+    {
+      "text": "They remixing all of Usher's classics. And I don't mind. #ThankYouObama",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3807
+    },
+    {
+      "text": "#GilmoreGirlsTop4 Jess, Luke, Sookie and Michel",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3802
+    },
+    {
+      "text": "Top 10 Most Terrifying Robots Ever Built - #Technology",
+      "gold": "Negative",
+      "predicted": "Positive",
+      "confidence": 0.3801
+    },
+    {
+      "text": "Banda Piper - Ricky Martin (Livin' la vida loca) e Marron 5 (This love) via <user>",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.38
+    },
+    {
+      "text": "Bulking Up! A Guide to Bulk Food Bargains and Storage #tpp #pjnet #xcot",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.38
+    },
+    {
+      "text": "And then they brought out Bell Biv Devoe! Michelle was ready.. #ThankYouObama",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.38
+    },
+    {
+      "text": "<user> <user> Happy Thanksgiving,hope you had a lot to be thankful 4. Please, Re-Do OBAMA CARE its that time again & its BAD!",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.38
+    },
+    {
+      "text": "Dance Teacher Realness with my 10th grade girls #mannequinchallenge",
+      "gold": "Neutral",
+      "predicted": "Positive",
+      "confidence": 0.3798
+    }
+  ]
+}
