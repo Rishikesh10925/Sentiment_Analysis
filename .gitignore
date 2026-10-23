@@ -14,12 +14,27 @@ data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
+# Real corpora and derived parquet files: reproducible from public sources via
+# the ingestion scripts, and far too large for git (~170 MB each).
+data/real/*
+data/curated/*
+!data/curated/manifest.json
+
 # Models
 models/*.pkl
 models/*.joblib
+# Fine-tuned transformer checkpoints are large (~270 MB); rebuild with
+# `python -m research.transformer_model`. The small linear artifacts used by
+# the API stay tracked.
+models/research/*/
+models/**/*.safetensors
+results/**/*.parquet
+results/*.log
+*.err.log
 
 # Bundled portable JDK (downloaded by Stage 5 setup, ~300MB, not project code)
 .tools/
+frontend/coverage/
 
 # Frontend
 frontend/node_modules/
